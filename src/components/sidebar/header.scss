@@ -1,0 +1,38 @@
+.header {
+  &:hover {
+    background: #333;
+  }
+  padding: 1.2em;
+  h1 {
+    color: #fff;
+    font-size: 20px;
+  }
+}
+
+.account {
+  margin: 0.4em 0;
+  > * {
+    vertical-align: middle;
+  }
+}
+
+.status + .name {
+  margin-left: 0.4em;
+}
+
+.status {
+  border-radius: 100%;
+  width: 0.6em;
+  height: 0.6em;
+  display: inline-block;
+}
+
+.online {
+  composes: status;
+  background: #688E3D;
+}
+
+.idle {
+  composes: status;
+  background: #eab700;
+}

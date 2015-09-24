@@ -1,0 +1,24 @@
+{
+	"name": "slerk-web",
+	"description": "Web frontend for Slerk.",
+	"repository": "",
+	"logo": "",
+	"keywords": [
+		"slack",
+		"slerk",
+		"startupslam"
+	],
+	"env": {
+		"API_URL": {
+			"description": "URL to the `slerk-api` backend.",
+			"value": "https://slerk-api.herokuapp.com"
+		},
+		"NODE_ENV": {
+			"description": "Environment the app is running in.",
+			"value": "production"
+		}
+	},
+	"buildpacks": [
+
+	]
+}

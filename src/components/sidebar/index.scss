@@ -1,0 +1,16 @@
+.sidebar {
+  z-index: 40;
+  width: 250px;
+  background: #3C413F;
+  color: #A9ACAB;
+  position: relative;
+}
+
+.credit {
+  position: absolute;
+  bottom: 23px;
+  left: 25px;
+  &, & a {
+    color: rgba(255,255,255,0.3);
+  }
+}

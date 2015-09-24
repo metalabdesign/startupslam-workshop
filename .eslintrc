@@ -1,0 +1,21 @@
+{
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "extends": [
+    "metalab/rules/babel",
+    "metalab/rules/best-practices",
+    "metalab/rules/docs",
+    "metalab/rules/errors",
+    "metalab/rules/filenames",
+    "metalab/rules/import",
+    "metalab/rules/modern",
+    "metalab/rules/react",
+    "metalab/rules/style"
+  ],
+  "rules": {
+    "comma-dangle": 0,
+    "no-extra-parens": 0
+  }
+}

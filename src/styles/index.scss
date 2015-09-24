@@ -1,0 +1,14 @@
+
+@import "css-wipe";
+
+html, body {
+	background: white;
+	font-family: "Ubuntu";
+	width: 100%;
+	height: 100%;
+}
+
+:global #content {
+	width: 100%;
+	height: 100%;
+}

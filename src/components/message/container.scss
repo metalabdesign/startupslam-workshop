@@ -1,0 +1,14 @@
+.common {
+  padding-left: 50px;
+  clear: left;
+}
+
+.default {
+  composes: common;
+
+}
+
+.detailed {
+  composes: common;
+  padding-top: 20px;
+}
