@@ -2,8 +2,15 @@
 
 Derp de derp.
 
-
 Have header/cookie/query param/whatever that controls the API endpoint. This allows the test runner to run code without interfering with calls in their existing sandbox.
+
+TODO:
+ * [ ] get Travis+tests working.
+ * [ ] fix server-side vendor exclusions.
+ * [ ] avoid entrypoints being included in common bundles
+ * [ ] able to inject html-shim into head
+ * [ ] favicon.
+ * [ ] proper contributing file.
 
 NOTES:
  * config/webpack/*.js has the .babel.js extension to automatically invoke babel. Why this can't be configured as an environment setting or global is beyond me. This is dumb and I want to fix it.

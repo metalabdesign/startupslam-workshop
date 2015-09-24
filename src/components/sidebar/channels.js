@@ -7,7 +7,7 @@ import { Component, createElement } from 'react';
 export default class ChannelList extends Component {
   render() : Component {
     const channels = [ ];
-    return <div>
+    return <div className="channels">
       <h1>Channels</h1>
       <a href=''>New</a>
       <ul>

@@ -1,5 +1,70 @@
 
-body {
-	background: red;
+* {
+	margin: 0;
+}
+
+html, body {
+	background: white;
 	font-family: "Ubuntu";
+	width: 100%;
+	height: 100%;
+}
+
+.slerk {
+	display: flex;
+	align-items: stretch;
+	height: 400px;
+}
+
+.sidebar {
+	width: 200px;
+	background: #3C413F;
+	color: #A9ACAB;
+}
+
+.chat {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.conversation {
+	flex: 1 1 auto;
+}
+
+.message {
+	margin-top: 4px;
+}
+
+.message-user-image, .message-meta {
+	display: none;
+}
+
+.message-first {
+	clear: left;
+
+	.message-user-image {
+		float: left;
+		display: block;
+		max-width: 40px;
+	}
+
+	.message-meta {
+		display: block;
+		margin-left: 46px;
+	}
+
+	.message-user-name {
+
+		font-weight: 800;
+
+	}
+}
+
+.message-timestamp {
+	color: #ddd;
+}
+
+.message-content {
+	margin-left: 46px;
 }

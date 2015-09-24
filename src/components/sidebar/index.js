@@ -9,11 +9,10 @@ import Channels from './channels';
  */
 export default class Sidebar extends Component {
   render() : Component {
-    return <div>
+    return <div className="sidebar">
       <Header/>
       Channels
       <Channels/>
-			<foo/>
     </div>;
   }
 }

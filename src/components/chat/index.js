@@ -10,7 +10,7 @@ import Input from './input';
  */
 export default class Chat extends Component {
   render() : Component {
-    return <div>
+    return <div className="chat">
       <Header/>
       <Conversation/>
       <Input/>

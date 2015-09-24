@@ -8,8 +8,8 @@ import { Component, createElement } from 'react';
 export default class BuildInfo extends Component {
   render() : Component {
     return <div>
-      <span>{BUILD_COMMIT}</span>
-      <span>{BUILD_VERSION}</span>
+      <span>Build: {BUILD_COMMIT}</span>
+      <span>Version: {BUILD_VERSION}</span>
     </div>;
   }
 }

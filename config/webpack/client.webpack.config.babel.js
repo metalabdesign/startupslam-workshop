@@ -24,7 +24,7 @@ const config = {
 
 // Extend the default webpack configuration with any partials you want.
 // e.g. partial(config, 'babel', 'compatibility');
-const xxx = partial(
+export default partial(
   config,
   'root',
   'env',
@@ -32,6 +32,7 @@ const xxx = partial(
   'hot',
   'babel',
   'postcss',
+  'sharp',
   'json',
   'vendor',
   'source-maps',
@@ -39,7 +40,3 @@ const xxx = partial(
 	'compatibility',
   'stats'
 );
-
-console.log(xxx);
-
-export default xxx;

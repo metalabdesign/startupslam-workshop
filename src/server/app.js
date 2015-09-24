@@ -6,6 +6,7 @@ import express from 'express';
 import compression from 'compression';
 import assets from './assets';
 import logging from './logging';
+import buildInfo from './build-info';
 
 // Create the application.
 const app = express();
@@ -13,6 +14,7 @@ const app = express();
 // Enable compression for requests.
 app.use(logging());
 app.use(compression());
+app.use(buildInfo());
 app.use(assets());
 
 /* eslint import/no-require: 0 */

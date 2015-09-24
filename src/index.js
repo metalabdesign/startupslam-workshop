@@ -9,8 +9,10 @@ import './styles/index.scss';
 export default class Root extends Component {
   render() {
     return <div>
-      <Sidebar/>
-      <Chat/>
+      <div className="slerk">
+        <Sidebar/>
+        <Chat/>
+      </div>
       <BuildInfo/>
     </div>;
   }
