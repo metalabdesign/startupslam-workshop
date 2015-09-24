@@ -31,7 +31,6 @@ export default partial(
   'build-info',
   'hot',
   'babel',
-  'sharp',
   'postcss',
   'json',
   'vendor',

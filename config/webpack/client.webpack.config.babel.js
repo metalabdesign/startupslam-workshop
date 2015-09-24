@@ -32,7 +32,6 @@ export default partial(
   'hot',
   'babel',
   'postcss',
-  'sharp',
   'json',
   'vendor',
   'source-maps',
