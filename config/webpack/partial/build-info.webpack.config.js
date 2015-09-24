@@ -18,7 +18,8 @@ function pkg(root) {
 
 export default function buildInfo({ context }) {
   // TODO: Any other useful information?
-  const commit = git(context, 'rev-parse', '--verify', 'HEAD').toString('utf8');
+  const commit = process.env.SOURCE_VERSION ||
+    git(context, 'rev-parse', '--verify', 'HEAD').toString('utf8');
   const version = pkg(context).version;
 
   return {
