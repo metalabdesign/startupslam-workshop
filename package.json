@@ -48,7 +48,8 @@
     "source-map-support": "^0.3.1",
     "extract-text-webpack-plugin": "^0.8.2",
     "stats-webpack-plugin": "^0.2.1",
-    "find-nearest-file": "^1.0.0"
+    "find-nearest-file": "^1.0.0",
+    "webpack-partial": "^0.3.0"
   },
   "devDependencies": {
     "eslint": "^1.5.1",
