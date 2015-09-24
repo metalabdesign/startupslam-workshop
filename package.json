@@ -61,5 +61,9 @@
     "stats-webpack-plugin": "^0.2.1",
     "webpack-udev-server": "^0.2.1",
     "chai": "^3.3.0"
+  },
+  "engines": {
+    "node": "^4.1.0",
+    "npm": "^3.3.3"
   }
 }
