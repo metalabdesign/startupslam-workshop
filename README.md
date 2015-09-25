@@ -20,6 +20,8 @@ Application configuration is handled via environment variables. http://12factor.
 
 ## Development
 
+Please read the [contributing guidelines](CONTRIBUTING.md) first.
+
 ### Setup
 
 ```sh
@@ -44,6 +46,7 @@ npm run dev
 It is handy to use environment files to automatically export the configuration you'd like to be working with. One project that supports this is [direnv]. This allows you to create a `.envrc` file that contains the configuration you want for the project. e.g.
 
 ```sh
+# .envrc
 PORT=8080
 API_URL=http://localhost:5050
 ```
@@ -52,6 +55,11 @@ API_URL=http://localhost:5050
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/metalabdesign/slerk-web)
 
+We use [TravisCI] to handle our continuous integration and deployment needs. Every git commit automatically triggers a build on [TravisCI] and only builds for which all tests pass are allowed to be merged into `master`. The integration test used is simply `npm test`.
+
+Once a successful build is merged into `master` [TravisCI] then automatically pushes the appropriate changes through [Heroku] to update the staging environment.
+
+### Setup
 
 ```sh
 brew install heroku
@@ -61,10 +69,11 @@ heroku login
 travis encrypt $(heroku auth:token) --add deploy.master.api_key
 ```
 
+### Configuration
 
-We use [TravisCI] to handle our continuous integration and deployment needs. Every git commit automatically triggers a build on [TravisCI] and only builds for which all tests pass are allowed to be merged into `master`. The integration test used is simply `npm test`.
-
-Once a successful build is merged into `master` [TravisCI] then automatically pushes the appropriate changes through [Heroku] to update the staging environment.
+```sh
+heroku config:set NODE_ENV=production
+```
 
 [Heroku]: https://www.heroku.com/
 [TravisCI]: https://travis-ci.org/
