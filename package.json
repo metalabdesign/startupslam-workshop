@@ -54,7 +54,8 @@
     "style-loader": "^0.12.4",
     "css-loader": "^0.19.0",
     "node-noop": "^0.0.1",
-    "moment": "^2.10.6"
+    "moment": "^2.10.6",
+    "css-wipe": "^4.1.2"
   },
   "devDependencies": {
     "eslint": "^1.5.1",
@@ -63,7 +64,7 @@
     "eslint-plugin-import": "^0.7.9",
     "eslint-plugin-react": "^3.4.2",
     "flow-bin": "^0.16.0",
-    "webpack-udev-server": "^0.2.1",
+    "webpack-udev-server": "^0.2.2",
     "chai": "^3.3.0"
   },
   "engines": {

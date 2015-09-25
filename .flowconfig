@@ -1,9 +1,9 @@
 [ignore]
-./build/*
-.*/node_modules/.*
+.*/build/.*
 
 [include]
-./*
+./src
+./node_modules
 
 [options]
 strip_root=true

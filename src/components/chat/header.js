@@ -1,13 +1,20 @@
 
-import { Component, createElement } from 'react';
+import { Component, Element, createElement } from 'react';
 
 /**
  * whatami
  */
 export default class Header extends Component {
-  render() : Component {
-    return <div>
-      <h1>ChannelName</h1>
+
+  static propTypes = {
+
+  }
+
+  render() : Element {
+    return <div className="chat-header">
+      <h1 className="chat-header-channel-name">Development</h1>
+      <span className="chat-header-topic">The most magical place.</span>
+      <span className="chat-header-user-count">Users: 12</span>
     </div>;
   }
 }

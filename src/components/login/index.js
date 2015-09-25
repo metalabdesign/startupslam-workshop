@@ -1,11 +1,11 @@
 
-import { Component, createElement } from 'react';
+import { Element, Component, createElement } from 'react';
 
 /**
  * whatami
  */
 export default class Login extends Component {
-  render() : Component {
+  render() : Element {
     return <form>
       <input type='text'/>
 			<input type='password'/>

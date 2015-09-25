@@ -1,13 +1,20 @@
 
-import { Component, createElement } from 'react';
+import { Component, Element, createElement } from 'react';
 
 /**
  * whatami
  */
 export default class Header extends Component {
-  render() : Component {
-    return <div>
-      <input type="text"/>
+
+  static propTypes = {
+
+  }
+
+  render() : Element {
+    return <div className="chat-input">
+      <button className="chat-input-upload">Upload</button>
+      <input type="text" className="chat-input-text"/>
+      <button className="chat-input-emoji">Emoji</button>
     </div>;
   }
 }

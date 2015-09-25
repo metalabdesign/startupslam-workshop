@@ -1,5 +1,5 @@
 
-import { Component, PropTypes, createElement } from 'react';
+import { Component,  Element, PropTypes, createElement } from 'react';
 import classNames from 'classnames';
 import moment from 'moment';
 
@@ -23,7 +23,7 @@ export default class Message extends Component {
     wide: PropTypes.boolean
   };
 
-  render() : Component {
+  render() : Element {
     return <div className={classNames({
       'message': true,
       'message-first': this.props.wide

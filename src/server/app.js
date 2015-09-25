@@ -11,7 +11,7 @@ import buildInfo from './build-info';
 // Create the application.
 const app = express();
 
-// Enable compression for requests.
+// Add assorted middleware.
 app.use(logging());
 app.use(compression());
 app.use(buildInfo());
@@ -38,4 +38,5 @@ app.all('*', (req, res, next) => {
   }, next);
 });
 
+// Fire.
 export default app;
