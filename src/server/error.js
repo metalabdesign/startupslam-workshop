@@ -1,7 +1,7 @@
 
 /**
  * Error displayer.
- * @return {[type]} [description]
+ * @returns {[type]} [description]
  */
 export default function error() {
   // TODO: Implement me!
