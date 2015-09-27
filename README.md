@@ -55,19 +55,13 @@ API_URL=http://localhost:5050
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/metalabdesign/slerk-web)
 
-We use [TravisCI] to handle our continuous integration and deployment needs. Every git commit automatically triggers a build on [TravisCI] and only builds for which all tests pass are allowed to be merged into `master`. The integration test used is simply `npm test`.
+We use [Codeship] to handle our continuous integration and deployment needs. Every git commit automatically triggers a build on [Codeship] and only builds for which all tests pass are allowed to be merged into `master`.
 
-Once a successful build is merged into `master` [TravisCI] then automatically pushes the appropriate changes through [Heroku] to update the staging environment.
+Once a successful build is merged into `master` [Codeship] then automatically pushes the appropriate changes through [Heroku] to update the staging environment.
 
 ### Setup
 
-```sh
-brew install heroku
-gem install travis
-
-heroku login
-travis encrypt $(heroku auth:token) --add deploy.master.api_key
-```
+TODO.
 
 ### Configuration
 
@@ -76,5 +70,5 @@ heroku config:set NODE_ENV=production
 ```
 
 [Heroku]: https://www.heroku.com/
-[TravisCI]: https://travis-ci.org/
+[Codeship]: https://www.codeship.com/
 [direnv]: http://direnv.net/
