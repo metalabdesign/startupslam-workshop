@@ -5,6 +5,8 @@ import Header from './header';
 import Conversation from './conversation';
 import Input from './input';
 
+import styles from './index.scss';
+
 /**
  * whatami
  */
@@ -15,7 +17,7 @@ export default class Chat extends Component {
   }
 
   render() : Element {
-    return <div className="chat">
+    return <div className={styles.chat}>
       <Header/>
       <Conversation/>
       <Input/>

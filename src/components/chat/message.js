@@ -1,7 +1,8 @@
 
 import { Component,  Element, PropTypes, createElement } from 'react';
-import classNames from 'classnames';
 import moment from 'moment';
+
+import styles from './message.scss';
 
 /*
 <Timestamp/>
@@ -24,18 +25,15 @@ export default class Message extends Component {
   };
 
   render() : Element {
-    return <div className={classNames({
-      'message': true,
-      'message-first': this.props.wide
-    })}>
-      <img src={this.props.image} className='message-user-image'/>
-      <div className='message-meta'>
-        <span className='message-user-name'>{this.props.name}</span>
-        <span className='message-timestamp'>
+    return <div className={this.props.wide ? styles.first : styles.normal}>
+      <img src={this.props.image} className={styles.userImage}/>
+      <div className={styles.meta}>
+        <span className={styles.userName}>{this.props.name}</span>
+        <span className={styles.timestamp}>
           {moment(this.props.timestamp).format('h:mm A')}
         </span>
       </div>
-      <div className='message-content'>lol</div>
+      <div className={styles.content}>lol</div>
     </div>;
   }
 }

@@ -4,6 +4,8 @@ import { Component, Element, createElement } from 'react';
 import Header from './header';
 import Channels from './channels';
 
+import styles from './index.scss';
+
 /**
  * whatami
  */
@@ -14,9 +16,8 @@ export default class Sidebar extends Component {
   }
 
   render() : Element {
-    return <div className="sidebar">
+    return <div className={styles.sidebar}>
       <Header/>
-      Channels
       <Channels/>
     </div>;
   }

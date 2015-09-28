@@ -1,0 +1,44 @@
+.common {
+  /* base message styles */
+}
+
+.normal {
+  composes: common;
+  /* base message styles */
+}
+
+.userImage, .meta {
+  display: none;
+}
+
+.first {
+  composes: common;
+
+  clear: left;
+  margin-top: 1em;
+
+  .userImage {
+    float: left;
+    border-radius: 50%;
+    display: block;
+    max-width: 40px;
+  }
+
+  .meta {
+    display: block;
+    margin-left: 46px;
+  }
+
+  .userName {
+    font-weight: 800;
+  }
+}
+
+.timestamp {
+  color: #ccc;
+}
+
+.content {
+  margin-top: 0.3em;
+  margin-left: 46px;
+}

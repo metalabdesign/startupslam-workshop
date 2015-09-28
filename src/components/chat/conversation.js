@@ -3,6 +3,8 @@ import { Component, Element, createElement } from 'react';
 
 import Message from './message';
 
+import styles from './conversation.scss';
+
 /**
  * A collection of messages.
  */
@@ -24,10 +26,10 @@ export default class Conversation extends Component {
       image: 'https://avatars2.githubusercontent.com/u/194892?v=3&s=400',
       timestamp: new Date()
     };
-    return <div className='conversation'>
+    return <div className={styles.conversation}>
       <div className="flex-fill"/>
-      <div className="conversation-messages">
-        <div className="date-break active">September 21st</div>
+      <div className={styles.messages}>
+        <div className={styles.dateBreakActive}>September 21st</div>
         <Message wide {...propsA}/>
         <Message {...propsA}/>
         <Message {...propsA}/>
