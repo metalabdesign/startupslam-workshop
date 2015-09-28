@@ -8,31 +8,31 @@ html, body {
 	height: 100%;
 }
 
-#content {
+:global #content {
 	width: 100%;
 	height: 100%;
 }
 
-.slerk {
+:global .slerk {
 	display: flex;
 	align-items: stretch;
 	width: 100%;
 	height: 100%;
 }
 
-.sidebar {
+:global .sidebar {
 	width: 250px;
 	background: #3C413F;
 	color: #A9ACAB;
 }
 
-.chat {
+:global .chat {
 	flex: 1 1 auto;
 	display: flex;
 	flex-direction: column;
 }
 
-.conversation {
+:global .conversation {
 	flex: 1 1 auto;
 	position: relative;
 	padding: 1em;
@@ -41,15 +41,16 @@ html, body {
 	justify-content: flex-end;
 }
 
-.message {
+:global .message {
 
 }
 
-.message-user-image, .message-meta {
+:global .message-user-image, 
+:global .message-meta {
 	display: none;
 }
 
-.message-first {
+:global .message-first {
 	clear: left;
 	margin-top: 1em;
 
@@ -72,16 +73,16 @@ html, body {
 	}
 }
 
-.message-timestamp {
+:global .message-timestamp {
 	color: #ccc;
 }
 
-.message-content {
+:global .message-content {
 	margin-top: 0.3em;
 	margin-left: 46px;
 }
 
-.chat-input {
+:global .chat-input {
 	margin: 1em;
 	display: flex;
 	flex-direction: row;
@@ -109,7 +110,7 @@ html, body {
 	}
 }
 
-.sidebar-header {
+:global .sidebar-header {
 	&:hover {
 		background: #333;
 	}
@@ -120,29 +121,29 @@ html, body {
 	}
 }
 
-.account-status + .account-name {
+:global .account-status + .account-name {
 	margin-left: 0.4em;
 }
 
-.account-status {
+:global .account-status {
 	border-radius: 100%;
 	width: 0.6em;
 	height: 0.6em;
 	display: inline-block;
 }
 
-.account-status-online {
+:global .account-status-online {
 	background: #688E3D;
 }
 
-.sidebar-header-account {
+:global .sidebar-header-account {
 	margin: 0.4em 0;
 	> * {
 		vertical-align: middle;
 	}
 }
 
-.date-break {
+:global .date-break {
 	font-weight: 800;
 	background: #fff;
 	text-align: center;
@@ -174,36 +175,36 @@ html, body {
 	}
 }
 
-.chat-input-upload {
+:global .chat-input-upload {
 	padding: 0 10px;
 	appearance: none;
 	background: #fff;
 	border-right: solid 1px #c0c0c0;
 }
 
-.chat-input-emoji {
+:global .chat-input-emoji {
 	background: #fff;
 	padding: 0 10px;
 }
 
-.chat-input-text {
+:global .chat-input-text {
 	appearance: none;
 	flex: 1 1 auto;
 	padding: 0.5em;
 }
 
-.chat-header {
+:global .chat-header {
 	display: flex;
 	flex-direction: row;
 	align-items: baseline;
 	padding: 1em;
 }
 
-.chat-header-channel-name {
+:global .chat-header-channel-name {
 	font-size: 20px;
 }
 
-.chat-header-topic {
+:global .chat-header-topic {
 	flex: 1 1 auto;
 	margin: 0 1em;
 }
