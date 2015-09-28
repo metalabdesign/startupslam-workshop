@@ -18,13 +18,15 @@ export default class Conversation extends Component {
     const propsA = {
       name: 'Izaak Schroeder',
       image: 'https://avatars2.githubusercontent.com/u/206921?v=3&s=460',
-      timestamp: new Date()
+      timestamp: new Date(),
+      content: 'Hello please go to http://www.google.ca.'
     };
 
     const propsB = {
       name: 'James Phillips',
       image: 'https://avatars2.githubusercontent.com/u/194892?v=3&s=400',
-      timestamp: new Date()
+      timestamp: new Date(),
+      content: '*this* __is__ a `test` <b>hello</b>'
     };
     return <div className={styles.conversation}>
       <div className='flex-fill'/>

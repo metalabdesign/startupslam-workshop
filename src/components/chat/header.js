@@ -1,5 +1,6 @@
 
 import { Component, Element, createElement } from 'react';
+import RichText from '../rich-text';
 
 import styles from './header.scss';
 
@@ -15,7 +16,7 @@ export default class Header extends Component {
   render() : Element {
     return <div className={styles.header}>
       <h1 className={styles.channelName} >Development</h1>
-      <span className={styles.topic}>The most magical place.</span>
+      <RichText className={styles.topic} text='The most *magical* place.'/>
       <span className={styles.userCount}>Users: 12</span>
     </div>;
   }
