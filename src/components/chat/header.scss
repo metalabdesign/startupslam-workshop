@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding: 1em;
+}
+
+.channelName {
+  font-size: 20px;
+}
+
+.topic {
+  flex: 1 1 auto;
+  margin: 0 1em;
+}
+
+.userCount {
+
+}

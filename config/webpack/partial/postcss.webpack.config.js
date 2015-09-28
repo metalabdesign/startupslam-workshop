@@ -12,6 +12,10 @@ import fonts from 'postcss-font-magician';
 
 const IS_STYLE = /\.(scss|sass|css)$/;
 
+function q(loader, query) {
+  return `${loader}?${JSON.stringify(query)}`;
+}
+
 export default function postcss({ target }) {
   const env = process.env.NODE_ENV || 'development';
   const external = env !== 'development' && target === 'web';
@@ -26,7 +30,11 @@ export default function postcss({ target }) {
             omit: 1
           })] : []),
           'style-loader',
-          'css-loader',
+          q('css-loader', {
+            modules: true,
+            importLoaders: 1,
+            localIdentName: '[name]_[local]_[hash:base64:5]'
+          }),
           'postcss-loader'
         ]
       }]

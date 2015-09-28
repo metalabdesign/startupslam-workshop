@@ -6,9 +6,11 @@ import Chat from './components/chat';
 
 import './styles/index.scss';
 
+import styles from './index.scss';
+
 export default class Root extends Component {
   render() : Element {
-    return <div className="slerk">
+    return <div className={styles.slerk}>
       <Sidebar/>
       <Chat/>
     </div>;
