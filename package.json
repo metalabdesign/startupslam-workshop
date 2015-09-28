@@ -7,8 +7,8 @@
     "start": "node ./build/server/server.js",
     "dev": "./node_modules/.bin/webpack-udev-server --client ./config/webpack/client.webpack.config.babel.js --server ./config/webpack/server.webpack.config.babel.js",
     "build": "npm run build:client && npm run build:server",
-    "build:client": "./node_modules/.bin/webpack --config ./config/webpack/client.webpack.config.babel.js",
-    "build:server": "./node_modules/.bin/webpack --config ./config/webpack/server.webpack.config.babel.js",
+    "build:client": "./node_modules/.bin/webpack --bail --config ./config/webpack/client.webpack.config.babel.js",
+    "build:server": "./node_modules/.bin/webpack --bail --config ./config/webpack/server.webpack.config.babel.js",
     "lint": "./node_modules/.bin/eslint --ignore-path .gitignore .",
     "flowtype": "./node_modules/.bin/flow check --all",
     "spec": "TODO",
@@ -41,6 +41,7 @@
     "json5": "^0.4.0",
     "postcss-import": "^7.0.0",
     "postcss-loader": "^0.6.0",
+    "style-loader": "^0.12.4",
     "postcss": "^5.0.2",
     "autoprefixer-core": "^5.2.1",
     "precss": "^0.3.0",
@@ -63,7 +64,6 @@
     "eslint-plugin-react": "^3.4.2",
     "flow-bin": "^0.16.0",
     "webpack-udev-server": "^0.2.2",
-    "style-loader": "^0.12.4",
     "chai": "^3.3.0"
   },
   "engines": {
