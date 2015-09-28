@@ -31,9 +31,10 @@ function body({ scripts = [] }) {
 }
 
 function html(props) {
+  const markup = renderToStaticMarkup(<Page {...props}/>);
   return Promise.resolve({
     ...props,
-    markup: '<!DOCTYPE html>' + renderToStaticMarkup(<Page {...props}/>)
+    markup: `<!DOCTYPE html>${markup})`
   });
 }
 

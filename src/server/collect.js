@@ -1,6 +1,6 @@
 
 export default function collect(root, stats) {
-  const base = root.charAt(root.length) !== '/' ? root + '/' : root;
+  const base = root.charAt(root.length) !== '/' ? `${root}/` : root;
 
   // Order the chunks so commons chunks come first.
   const files = stats.chunks
