@@ -28,9 +28,9 @@ function loaders({ target, external, minimize }) {
         `${q('css-loader', config)}!postcss-loader`
       );
     }
-    return `style-loader!${q('css-loader', config)}`;
+    return `style-loader!${q('css-loader', config)}!postcss-loader`;
   }
-  return q('css-loader/locals', config);
+  return `${q('css-loader/locals', config)}!postcss-loader`;
 }
 
 export default function postcss({ target }) {
