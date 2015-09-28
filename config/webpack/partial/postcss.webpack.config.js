@@ -6,7 +6,6 @@ import autoprefixer from 'autoprefixer-core';
 import precss from 'precss';
 import lost from 'lost';
 import cssimport from 'postcss-import';
-import csswring from 'csswring';
 import fonts from 'postcss-font-magician';
 
 const IS_STYLE = /\.(scss|sass|css)$/;
@@ -21,7 +20,8 @@ export default function postcss({ target }) {
   const config = {
     modules: true,
     importLoaders: 1,
-    localIdentName: '[name]_[local]_[hash:base64:5]'
+    localIdentName: '[name]_[local]_[hash:base64:5]',
+    minimize: env === 'production'
   };
   return {
     // Module settings.
@@ -52,8 +52,7 @@ export default function postcss({ target }) {
         fonts,
         autoprefixer({
           browsers: [ 'last 2 versions' ]
-        }),
-        ...(env === 'production' ? [ csswring ] : [ ])
+        })
       ];
     },
 
