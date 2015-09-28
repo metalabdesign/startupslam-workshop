@@ -14,31 +14,36 @@ function q(loader, query) {
   return `${loader}?${JSON.stringify(query)}`;
 }
 
-export default function postcss({ target }) {
-  const env = process.env.NODE_ENV || 'development';
-  const external = env !== 'development' && target === 'web';
+function loaders({ target, external, minimize }) {
   const config = {
     modules: true,
     importLoaders: 1,
-    localIdentName: '[name]_[local]_[hash:base64:5]',
-    minimize: env === 'production'
+    localIdentName: '[name]-[local]-[hash:base64:5]',
+    minimize: minimize
   };
+  if (target === 'web') {
+    if (external) {
+      return ExtractTextPlugin.extract(
+        'style-loader',
+        `${q('css-loader', config)}!postcss-loader`
+      );
+    }
+    return `style-loader!${q('css-loader', config)}`;
+  }
+  return q('css-loader/locals', config);
+}
+
+export default function postcss({ target }) {
+  const env = process.env.NODE_ENV || 'development';
+  const external = env !== 'development' && target === 'web';
+  const minimize = env === 'production';
+
   return {
     // Module settings.
     module: {
       loaders: [{
         test: IS_STYLE,
-        loaders: [
-          ...(external ? [ExtractTextPlugin.loader({
-            extract: true,
-            omit: 1
-          })] : []),
-          ...(target === 'web' ?
-            ['style-loader', q('css-loader', config)] :
-            [q('css-loader/locals', config)]
-          ),
-          'postcss-loader'
-        ]
+        loader: loaders({ target, external, minimize })
       }]
     },
 
