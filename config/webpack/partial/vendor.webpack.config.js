@@ -6,7 +6,7 @@ export default function({ target }) {
     externals: target === 'node' ? [(context, request, cb) => {
 			// TODO: Make this work properly.
       if (/^[a-z\-0-9]+$/.test(request)) {
-        return cb(null, 'commonjs ' + request);
+        return cb(null, `commonjs ${request}`);
       }
       cb();
     }] : [ ],

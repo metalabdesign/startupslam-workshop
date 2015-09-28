@@ -27,7 +27,7 @@ export default class Conversation extends Component {
       timestamp: new Date()
     };
     return <div className={styles.conversation}>
-      <div className="flex-fill"/>
+      <div className='flex-fill'/>
       <div className={styles.messages}>
         <div className={styles.dateBreakActive}>September 21st</div>
         <Message wide {...propsA}/>
