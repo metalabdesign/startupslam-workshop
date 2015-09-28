@@ -34,7 +34,7 @@ function html(props) {
   const markup = renderToStaticMarkup(<Page {...props}/>);
   return Promise.resolve({
     ...props,
-    markup: `<!DOCTYPE html>${markup})`
+    markup: `<!DOCTYPE html>${markup}`
   });
 }
 

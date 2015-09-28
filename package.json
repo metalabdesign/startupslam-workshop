@@ -17,6 +17,7 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
+    "mdast": "^2.0.0",
     "express": "^5.0.0-alpha.2",
     "compression": "^1.5.2",
     "serve-static": "^1.10.0",

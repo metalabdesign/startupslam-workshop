@@ -2,6 +2,7 @@
 import { Component,  Element, PropTypes, createElement } from 'react';
 import moment from 'moment';
 
+import RichText from '../rich-text';
 import styles from './message.scss';
 
 /*
@@ -21,7 +22,8 @@ export default class Message extends Component {
     timestamp: PropTypes.date,
     image: PropTypes.string,
     name: PropTypes.string,
-    wide: PropTypes.boolean
+    wide: PropTypes.boolean,
+    content: PropTypes.string
   };
 
   render() : Element {
@@ -33,7 +35,7 @@ export default class Message extends Component {
           {moment(this.props.timestamp).format('h:mm A')}
         </span>
       </div>
-      <div className={styles.content}>lol</div>
+      <RichText className={styles.content} text={this.props.content}/>
     </div>;
   }
 }
