@@ -1,6 +1,5 @@
 
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import { NormalModuleReplacementPlugin } from 'webpack';
 
 // `postcss` modules.
 import autoprefixer from 'autoprefixer-core';
@@ -19,6 +18,11 @@ function q(loader, query) {
 export default function postcss({ target }) {
   const env = process.env.NODE_ENV || 'development';
   const external = env !== 'development' && target === 'web';
+  const config = {
+    modules: true,
+    importLoaders: 1,
+    localIdentName: '[name]_[local]_[hash:base64:5]'
+  };
   return {
     // Module settings.
     module: {
@@ -29,12 +33,10 @@ export default function postcss({ target }) {
             extract: true,
             omit: 1
           })] : []),
-          'style-loader',
-          q('css-loader', {
-            modules: true,
-            importLoaders: 1,
-            localIdentName: '[name]_[local]_[hash:base64:5]'
-          }),
+          ...(target === 'web' ?
+            ['style-loader', q('css-loader', config)] :
+            [q('css-loader/locals', config)]
+          ),
           'postcss-loader'
         ]
       }]
@@ -58,7 +60,7 @@ export default function postcss({ target }) {
     plugins: [
       ...(target !== 'web' ? [
         // Ignore CSS far as server-side goes
-        new NormalModuleReplacementPlugin(IS_STYLE, 'node-noop')
+
       ] : [ ]),
       ...(external ? [
         // Some crawlers or things with Javascript disabled prefer normal CSS
