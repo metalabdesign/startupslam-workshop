@@ -12,5 +12,9 @@
     "./config/eslint/docs.eslintrc",
     "./config/eslint/imports.eslintrc",
     "./config/eslint/next.eslintrc"
-  ]
+  ],
+  "rules": {
+    "comma-dangle": 0,
+    "no-extra-parens": 0
+  }
 }

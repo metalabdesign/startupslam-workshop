@@ -1,18 +1,16 @@
-
-import { Component, Element, createElement } from 'react';
-import Sidebar from './components/sidebar';
-import Chat from './components/chat';
+import { createElement } from 'react';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import promiseMiddleware from 'redux-promise';
 // import BuildInfo from './components/build-info';
 
-import './styles/index.scss';
+import reducer from './reducers/index';
+import App from './containers/app';
 
-import styles from './index.scss';
+const store = applyMiddleware(promiseMiddleware)(createStore)(reducer);
 
-export default class Root extends Component {
-  render() : Element {
-    return <div className={styles.slerk}>
-      <Sidebar/>
-      <Chat/>
-    </div>;
-  }
-}
+export default (
+  <Provider store={store}>
+    <App/>
+  </Provider>
+);
