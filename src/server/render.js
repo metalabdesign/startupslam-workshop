@@ -20,7 +20,7 @@ function body({ scripts = [] }) {
     resolve({
       status: 200,
       title: 'Hello World',
-      markup: renderToString(<Root/>),
+      markup: renderToString(Root),
       scripts: [{
         id: 'state',
         type: 'text/json',
