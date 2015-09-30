@@ -14,9 +14,13 @@ export default class Header extends Component {
 
   render() : Element {
     return <div className={styles.input}>
-      <button className={styles.upload}>Upload</button>
-      <input type='text' className={styles.text}/>
-      <button className={styles.emoji}>Emoji</button>
+      {/* <button className={styles.upload}>Upload</button> */}
+      <input
+        type='text'
+        className={styles.text}
+        placeholder='Type a message and hit enter'
+      />
+      {/* <button className={styles.emoji}>Emoji</button> */}
     </div>;
   }
 }

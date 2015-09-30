@@ -1,5 +1,4 @@
-
-import { Component, Element, createElement } from 'react';
+import { Component, Element, PropTypes, createElement } from 'react';
 
 import Message from './message';
 
@@ -11,33 +10,27 @@ import styles from './conversation.scss';
 export default class Conversation extends Component {
 
   static propTypes = {
+    messages: PropTypes.array.isRequired,
+  }
 
+  static defaultProps = {
+    messages: [],
+  }
+
+  renderMessages() : Array {
+    // TODO: group sequential messages from a user
+    // TODO: group messages by date and display date header:
+    //   <div className={styles.dateBreakActive}>September 21st</div>
+    return this.props.messages.map(message => {
+      return <Message wide {...message}/>;
+    });
   }
 
   render() : Element {
-    const propsA = {
-      name: 'Izaak Schroeder',
-      image: 'https://avatars2.githubusercontent.com/u/206921?v=3&s=460',
-      timestamp: new Date(),
-      content: 'Hello please go to http://www.google.ca.'
-    };
-
-    const propsB = {
-      name: 'James Phillips',
-      image: 'https://avatars2.githubusercontent.com/u/194892?v=3&s=400',
-      timestamp: new Date(),
-      content: '*this* __is__ a `test` <b>hello</b>'
-    };
     return <div className={styles.conversation}>
       <div className='flex-fill'/>
       <div className={styles.messages}>
-        <div className={styles.dateBreakActive}>September 21st</div>
-        <Message wide {...propsA}/>
-        <Message {...propsA}/>
-        <Message {...propsA}/>
-        <Message wide {...propsB}/>
-        <Message {...propsB}/>
-        <Message {...propsB}/>
+        {this.renderMessages()}
       </div>
     </div>;
   }

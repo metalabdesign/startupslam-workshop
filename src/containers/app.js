@@ -1,4 +1,4 @@
-import { Component, Element, createElement } from 'react';
+import { Component, Element, createElement, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import Sidebar from '../components/sidebar';
@@ -8,11 +8,19 @@ import '../styles/index.scss';
 import styles from '../index.scss';
 
 class App extends Component {
+
+  static propTypes = {
+    channels: PropTypes.object.isRequired,
+    users: PropTypes.object.isRequired,
+  }
+
   render() : Element {
+    const { channels } = this.props;
+
     return (
       <div className={styles.slerk}>
         <Sidebar/>
-        <Chat/>
+        <Chat channel={channels.general} />
       </div>
     );
   }
