@@ -14,7 +14,7 @@ const isProd = process.env.NODE_ENV === 'production';
 const isBrowser = typeof window !== 'undefined';
 const useDevtools = !isProd && isBrowser;
 
-const persistStateMiddleware =
+const persistStateMiddleware = () =>
   persistState(window.location.href.match(/[?&]debugSession=([^&]+)\b/));
 
 // If prod, noop the devtools middleware (identity fn is noop of composition)
@@ -29,7 +29,7 @@ export default (
     <Provider store={store}>
       <App/>
     </Provider>
-    { isProd ? null :
+    { !useDevtools ? null :
       <DebugPanel right bottom top>
         <DevTools store={store} monitor={LogMonitor} />
       </DebugPanel>
