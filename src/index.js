@@ -21,7 +21,7 @@ const persistStateMiddleware = () =>
 const store = compose(
   applyMiddleware(promiseMiddleware),
   useDevtools ? devTools() : identity,
-  useDevtools ? persistStateMiddleware : identity,
+  useDevtools ? persistStateMiddleware() : identity,
 )(createStore)(reducer);
 
 export default (
