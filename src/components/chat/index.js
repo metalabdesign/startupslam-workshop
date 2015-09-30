@@ -1,5 +1,4 @@
-
-import { Component, Element, createElement } from 'react';
+import { Component, Element, createElement, PropTypes } from 'react';
 
 import Header from './header';
 import Conversation from './conversation';
@@ -13,13 +12,15 @@ import styles from './index.scss';
 export default class Chat extends Component {
 
   static propTypes = {
-
+    channel: PropTypes.object.isRequired,
   }
 
   render() : Element {
+    const { channel } = this.props;
+
     return <div className={styles.chat}>
-      <Header/>
-      <Conversation/>
+      <Header title={channel.displayName} topic={channel.topic}/>
+      <Conversation messages={channel.messages}/>
       <Input/>
     </div>;
   }
