@@ -1,4 +1,3 @@
-
 import nearest from 'find-nearest-file';
 import partial from 'webpack-partial';
 import path from 'path';
@@ -36,6 +35,6 @@ export default partial(
   'vendor',
   'source-maps',
   'optimize',
-	'compatibility',
+  'compatibility',
   'stats'
 );

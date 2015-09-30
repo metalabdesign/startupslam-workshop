@@ -1,11 +1,11 @@
 {
   "name": "slerk-web",
   "version": "0.1.0",
-  "author": "Your Name <your@email.com>",
+  "author": "Metalab Design, Inc.",
   "main": "src/index.js",
   "scripts": {
     "start": "node ./build/server/server.js",
-    "dev": "./node_modules/.bin/webpack-udev-server --client ./config/webpack/client.webpack.config.babel.js --server ./config/webpack/server.webpack.config.babel.js",
+    "dev": "PORT=8080 ./node_modules/.bin/webpack-udev-server --client ./config/webpack/client.webpack.config.babel.js --server ./config/webpack/server.webpack.config.babel.js",
     "build": "npm run build:client && npm run build:server",
     "build:client": "./node_modules/.bin/webpack --bail --config ./config/webpack/client.webpack.config.babel.js",
     "build:server": "./node_modules/.bin/webpack --bail --config ./config/webpack/server.webpack.config.babel.js",
@@ -17,6 +17,7 @@
     "postinstall": "npm run build"
   },
   "dependencies": {
+    "auth0-js": "^6.7.2",
     "autoprefixer-core": "^5.2.1",
     "babel-core": "^5.5.6",
     "babel-loader": "^5.1.4",

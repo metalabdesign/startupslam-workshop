@@ -1,10 +1,15 @@
 import { createAction } from 'redux-actions';
 
+import { setToken, parseHash } from './utils/auth';
 import { Socket } from './vendor/phoenix';
 import { token, generalChannelId } from './constants.js';
 import { retrieveMessages } from './api/messages';
-
-import { MESSAGE_SEND, SOCKET_CONNECT, MESSAGES_FETCH } from './action-types';
+import {
+  MESSAGE_SEND,
+  MESSAGES_FETCH,
+  AUTH_COMPLETE,
+  SOCKET_CONNECT
+} from './action-types';
 
 // TODO: get token from auth flow
 
@@ -27,4 +32,15 @@ export const socketConnect = createAction(SOCKET_CONNECT, () => {
   });
 
   return { channel, socket };
+});
+
+export const completeAuthentication = createAction(AUTH_COMPLETE, () => {
+  const token = parseHash(window.location.hash);
+
+  if (token) {
+    setToken(token);
+    window.location.hash = '';
+  }
+
+  return token;
 });
