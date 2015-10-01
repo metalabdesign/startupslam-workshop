@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
-import { Socket } from 'vendor/phoenix';
+
 import generalChannelId from 'lib/general-channel-id';
+import { Socket } from './vendor/phoenix';
 
 import { MESSAGE_SEND, SOCKET_CONNECT } from './action-types';
 
@@ -14,6 +15,11 @@ export const messageSend = createAction(MESSAGE_SEND, (/* obj */) => {
 });
 
 export const socketConnect = createAction(SOCKET_CONNECT, () => {
+  // If we're in a stubbed Phoenix lib on the server, bail early
+  if (Object.keys(Socket).length === 0) {
+    return {};
+  }
+
   const socket = new Socket(
     'wss://slerk-api.herokuapp.com/socket',
     {params: {token}}

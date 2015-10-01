@@ -1,4 +1,4 @@
-
+import webpack from 'webpack';
 import nearest from 'find-nearest-file';
 import partial from 'webpack-partial';
 import path from 'path';
@@ -11,6 +11,9 @@ const config = {
   entry: {
     server: path.join(root, 'entry', 'server.entry.js')
   },
+  plugins: [
+    new webpack.NormalModuleReplacementPlugin(/phoenix/, 'phoenix-stub.js')
+  ],
   target: 'node',
   context: root,
   // Output controls the settings for file generation.
