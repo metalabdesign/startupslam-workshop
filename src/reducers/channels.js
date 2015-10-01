@@ -1,10 +1,12 @@
+import generalChannelId from '../lib/general-channel-id';
+//
 // Single channel called 'general' for now
 // Uses a simple message state shape, will have to convert server responses
 const initialState = {
   general: {
     displayName: 'General',
     topic: 'Slerk: now with 60% more *erk*',
-    id: 'UUID-GOES-HERE',
+    id: generalChannelId,
     messages: [
       {
         user: {

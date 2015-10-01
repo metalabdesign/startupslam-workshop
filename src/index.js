@@ -8,6 +8,7 @@ import promiseMiddleware from 'redux-promise';
 
 import reducer from './reducers/index';
 import App from './containers/app';
+import { socketConnect } from './actions';
 
 const identity = (x) => x;
 const isProd = process.env.NODE_ENV === 'production';
@@ -23,6 +24,8 @@ const store = compose(
   useDevtools ? devTools() : identity,
   useDevtools ? persistStateMiddleware() : identity,
 )(createStore)(reducer);
+
+store.dispatch(socketConnect());
 
 export default (
   <div style={{height: '100%'}}>
