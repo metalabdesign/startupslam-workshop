@@ -15,27 +15,35 @@ const isProd = process.env.NODE_ENV === 'production';
 const isBrowser = typeof window !== 'undefined';
 const useDevtools = !isProd && isBrowser;
 
-const persistStateMiddleware = () =>
-  persistState(window.location.href.match(/[?&]debugSession=([^&]+)\b/));
+// If we're on the server, don't do anything with the app
+let rootComponent = <div>Loading Slerk...</div>;
 
-// If prod, noop the devtools middleware (identity fn is noop of composition)
-const store = compose(
-  applyMiddleware(promiseMiddleware),
-  useDevtools ? devTools() : identity,
-  useDevtools ? persistStateMiddleware() : identity,
-)(createStore)(reducer);
+// Otherwise start Slerk
+if (isBrowser) {
+  const persistStateMiddleware = () =>
+    persistState(window.location.href.match(/[?&]debugSession=([^&]+)\b/));
 
-store.dispatch(socketConnect());
+  // If prod, noop the devtools middleware (identity fn is noop of composition)
+  const store = compose(
+    applyMiddleware(promiseMiddleware),
+    useDevtools ? devTools() : identity,
+    useDevtools ? persistStateMiddleware() : identity,
+  )(createStore)(reducer);
 
-export default (
-  <div style={{height: '100%'}}>
-    <Provider store={store}>
-      <App/>
-    </Provider>
-    { !useDevtools ? null :
-      <DebugPanel right bottom top>
-        <DevTools store={store} monitor={LogMonitor} />
-      </DebugPanel>
-    }
-  </div>
-);
+  store.dispatch(socketConnect());
+
+  rootComponent = (
+    <div style={{height: '100%'}}>
+      <Provider store={store}>
+        <App/>
+      </Provider>
+      { !useDevtools ? null :
+        <DebugPanel right bottom top>
+          <DevTools store={store} monitor={LogMonitor} />
+        </DebugPanel>
+      }
+    </div>
+  );
+}
+
+export default rootComponent;

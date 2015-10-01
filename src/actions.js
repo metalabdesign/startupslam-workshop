@@ -19,12 +19,6 @@ export const socketConnect = createAction(SOCKET_CONNECT, () => {
     'wss://slerk-api.herokuapp.com/socket',
     {params: {token}}
   );
-
-  // If we're in a stubbed Phoenix lib on the server, bail early
-  if (typeof socket.connect !== 'function') {
-    return {};
-  }
-
   socket.connect();
 
   const channel = socket.channel(`channels:${generalChannelId}`);
@@ -32,8 +26,5 @@ export const socketConnect = createAction(SOCKET_CONNECT, () => {
     // console.log('channel joined');
   });
 
-  return {
-    channel,
-    socket,
-  };
+  return { channel, socket };
 });
