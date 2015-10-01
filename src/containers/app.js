@@ -12,6 +12,7 @@ class App extends Component {
   static propTypes = {
     channels: PropTypes.object.isRequired,
     users: PropTypes.object.isRequired,
+    socket: PropTypes.object.isRequired,
   }
 
   render() : Element {

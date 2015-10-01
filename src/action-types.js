@@ -1,1 +1,3 @@
 export const MESSAGE_SEND = 'MESSAGE_SEND';
+
+export const SOCKET_CONNECT = 'SOCKET_CONNECT';
