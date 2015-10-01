@@ -31,8 +31,9 @@ if (isBrowser) {
     useDevtools ? persistStateMiddleware() : identity,
   )(createStore)(reducer);
 
-  store.dispatch(socketConnect());
-  store.dispatch(messagesFetch());
+  const { token } = store.getState().auth;
+  store.dispatch(socketConnect(token));
+  store.dispatch(messagesFetch(token));
 
   rootComponent = (
     <div style={{height: '100%'}}>

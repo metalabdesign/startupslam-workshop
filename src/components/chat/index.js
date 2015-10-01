@@ -13,15 +13,16 @@ export default class Chat extends Component {
 
   static propTypes = {
     channel: PropTypes.object.isRequired,
+    messageSend: PropTypes.func.isRequired,
   }
 
   render() : Element {
-    const { channel } = this.props;
+    const { channel, messageSend } = this.props;
 
     return <div className={styles.chat}>
       <Header title={channel.displayName} topic={channel.topic}/>
       <Conversation messages={channel.messages}/>
-      <Input/>
+      <Input messageSend={messageSend}/>
     </div>;
   }
 }

@@ -36,7 +36,7 @@ export default function channels(state = initialState, action) {
   case MESSAGES_FETCH:
     // TODO: remove this once we have something coming from the server
     // Simulate messages from the server if we get an empty payload
-    const newMessages = action.payload.length > 0 ? action.payload :
+    const newMessages = action.payload.length > 0 ? action.payload.reverse() :
       [{...initialState.general.messages[0], text: 'Hi from the server!'}];
 
     return {
