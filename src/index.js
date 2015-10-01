@@ -6,10 +6,6 @@ import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise';
 // import BuildInfo from './components/build-info';
 
-import reducer from './reducers/index';
-import App from './containers/app';
-import { socketConnect, messagesFetch } from './actions';
-
 const identity = (x) => x;
 const isProd = process.env.NODE_ENV === 'production';
 const isBrowser = typeof window !== 'undefined';
@@ -20,6 +16,11 @@ let rootComponent = <div>Loading Slerk...</div>;
 
 // Otherwise start Slerk
 if (isBrowser) {
+  /* eslint import/no-require: 0 */
+  const reducer = require('./reducers/index');
+  const RootApp = require('./containers/root');
+  const { socketConnect, messagesFetch } = require('./actions');
+
   const persistStateMiddleware = () =>
     persistState(window.location.href.match(/[?&]debugSession=([^&]+)\b/));
 
@@ -36,7 +37,7 @@ if (isBrowser) {
   rootComponent = (
     <div style={{height: '100%'}}>
       <Provider store={store}>
-        <App/>
+        <RootApp/>
       </Provider>
       { !useDevtools ? null :
         <DebugPanel right bottom top>
