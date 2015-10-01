@@ -8,7 +8,7 @@ import promiseMiddleware from 'redux-promise';
 
 import reducer from './reducers/index';
 import App from './containers/app';
-import { socketConnect } from './actions';
+import { socketConnect, messagesFetch } from './actions';
 
 const identity = (x) => x;
 const isProd = process.env.NODE_ENV === 'production';
@@ -31,6 +31,7 @@ if (isBrowser) {
   )(createStore)(reducer);
 
   store.dispatch(socketConnect());
+  store.dispatch(messagesFetch());
 
   rootComponent = (
     <div style={{height: '100%'}}>
