@@ -1,7 +1,7 @@
 import { Component, Element, createElement, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { messageSend } from '../actions';
+import { messageSend, updateUserPresence } from '../actions';
 
 import Sidebar from '../components/sidebar';
 import Chat from '../components/chat';
@@ -12,15 +12,27 @@ import styles from '../index.scss';
 class App extends Component {
 
   static propTypes = {
+    dispatch: PropTypes.func.isRequired,
     channels: PropTypes.object.isRequired,
     users: PropTypes.object.isRequired,
     socket: PropTypes.object.isRequired,
     auth: PropTypes.object.isRequired,
-    dispatch: PropTypes.func.isRequired,
+  }
+
+  componentWillMount() {
+    const { dispatch, socket } = this.props;
+    this._presenceChannel = socket.socket.channel('users:presence');
+    this._presenceChannel.on('status_updated', payload =>
+        dispatch(updateUserPresence(payload)));
+    this._presenceChannel.join();
+  }
+
+  componentWillUnmount() {
+    this._presenceChannel.close();
   }
 
   render() : Element {
-    const { dispatch, socket, channels } = this.props;
+    const { dispatch, socket, channels, users } = this.props;
 
     const boundMessageSend = (message) => {
       dispatch(messageSend(message, socket.channel));
@@ -28,7 +40,7 @@ class App extends Component {
 
     return (
       <div className={styles.slerk}>
-        <Sidebar/>
+        <Sidebar users={users}/>
         <Chat channel={channels.general} messageSend={boundMessageSend} />
       </div>
     );

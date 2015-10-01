@@ -9,6 +9,7 @@ import {
   MESSAGE_SEND,
   MESSAGE_RECEIVE,
   MESSAGES_FETCH,
+  USERS_UPDATE_PRESENCE,
   AUTH_COMPLETE,
   SOCKET_CONNECT,
 } from './action-types';
@@ -24,6 +25,11 @@ export const messageReceive = createAction(MESSAGE_RECEIVE, (obj) => {
 export const messagesFetch = createAction(MESSAGES_FETCH, (token) => {
   return retrieveMessages(token);
 });
+
+export const updateUserPresence = createAction(
+  USERS_UPDATE_PRESENCE,
+  (payload) => payload
+);
 
 export const socketConnect = createAction(SOCKET_CONNECT, (token, dispatch) => {
   const socket = new Socket(
