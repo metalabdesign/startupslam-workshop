@@ -19,12 +19,7 @@ export default class Header extends Component {
   onKeyPress(ev) {
     // On enter, submit the chat msg and clear the field
     if (ev.keyCode === 13) {
-      this.props.messageSend(ev.target.value);
-      this.setState({value: ''});
-    }
-    // On esc, clear the field
-    if (ev.keyCode === 27) {
-      this.setState({value: ''});
+      alert('Implement me');
     }
   }
 

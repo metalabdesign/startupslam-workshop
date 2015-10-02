@@ -14,14 +14,12 @@ export default class Header extends Component {
   }
 
   render() : Element {
-    const { title, topic } = this.props;
-
     return <div className={styles.header}>
       <h1 className={styles.channelName}>
         <span className={styles.hashSign}>#</span>
-        {title}
+        [title]
       </h1>
-      <RichText className={styles.topic} text={topic}/>
+      <span>[topic]</span>
       {/* <span className={styles.userCount}>Users: 12</span> */}
     </div>;
   }
