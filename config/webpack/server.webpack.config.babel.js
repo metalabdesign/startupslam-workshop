@@ -30,6 +30,7 @@ export default partial(
   'build-info',
   'hot',
   'babel',
+  'images',
   'postcss',
   'json',
   'vendor',
