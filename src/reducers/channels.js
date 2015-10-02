@@ -6,7 +6,7 @@ import { MESSAGES_FETCH, MESSAGE_RECEIVE } from '../action-types';
 // Uses a simple message state shape, will have to convert server responses
 const initialState = {
   general: {
-    displayName: 'General',
+    displayName: 'general',
     topic: 'Slerk: now with 60% more *erk*',
     id: generalChannelId,
     messages: [

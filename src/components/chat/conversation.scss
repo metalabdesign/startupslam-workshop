@@ -1,10 +1,13 @@
 .conversation {
-  flex: 1 1 auto;
+  flex: 1;
   position: relative;
   padding: 1em;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  overflow-y: auto;
+}
+
+.messages {
+  height: 100%;
 }
 
 .dateBreakNormal {

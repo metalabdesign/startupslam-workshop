@@ -28,7 +28,6 @@ export default class Conversation extends Component {
 
   render() : Element {
     return <div className={styles.conversation}>
-      <div className='flex-fill'/>
       <div className={styles.messages}>
         {this.renderMessages()}
       </div>

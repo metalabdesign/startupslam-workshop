@@ -15,11 +15,13 @@ export default class Header extends Component {
 
   render() : Element {
     return <div className={styles.header}>
-      <h1>MetaLab</h1>
+      <h1>Startup Slam</h1>
+      {/*
       <div className={styles.account}>
         <span className={styles.online}/>
         <span className={styles.name}>Izaak Schroeder</span>
       </div>
+      */}
     </div>;
   }
 }
