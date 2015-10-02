@@ -1,4 +1,4 @@
-import { sortBy } from 'lodash';
+import { isArray, takeRight, sortBy } from 'lodash';
 import { generalChannelId } from '../constants';
 import { MESSAGES_FETCH, MESSAGE_RECEIVE } from '../action-types';
 
@@ -34,32 +34,31 @@ const initialState = {
   },
 };
 
-function addMessagesToState(state, messages) {
-  const newMessages = sortBy(
-    [...state.general.messages, ...messages],
-    'inserted_at'
-  );
+function addMessagesToState(state, data) : Object {
+  const msgLimit = 10000;
+  // If we get a single message, then make an array out of it
+  const messages = isArray(data) ? data : [data];
+  const sorted = sortBy([
+    ...state.general.messages,
+    ...messages
+  ], 'inserted_at');
+  const clamped = takeRight(sorted, msgLimit);
 
   return {
     ...state,
     general: {
       ...state.general,
-      messages: newMessages,
+      messages: clamped,
     },
   };
 }
 
-export default function channels(state = initialState, action) {
+export default function channels(state = initialState, action) : Object {
   switch (action.type) {
-
   case MESSAGE_RECEIVE:
-    return addMessagesToState(state, [action.payload]);
-
   case MESSAGES_FETCH:
     return addMessagesToState(state, action.payload);
-
   default:
     return state;
-
   }
 }

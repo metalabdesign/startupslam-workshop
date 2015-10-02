@@ -1,4 +1,5 @@
 import { Component, Element, createElement, PropTypes } from 'react';
+import { takeRight } from 'lodash';
 
 import Header from './header';
 import Conversation from './conversation';
@@ -19,9 +20,12 @@ export default class Chat extends Component {
   render() : Element {
     const { channel, messageSend } = this.props;
 
+    // Only display the last x messages for perf reasons
+    const messages = takeRight(channel.messages, 100);
+
     return <div className={styles.chat}>
       <Header title={channel.displayName} topic={channel.topic}/>
-      <Conversation messages={channel.messages}/>
+      <Conversation messages={messages}/>
       <Input messageSend={messageSend}/>
     </div>;
   }
