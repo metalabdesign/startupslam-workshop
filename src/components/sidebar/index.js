@@ -1,8 +1,8 @@
-
-import { Component, Element, createElement } from 'react';
+import { Component, Element, createElement, PropTypes } from 'react';
 
 import Header from './header';
 import Channels from './channels';
+import Users from './users';
 
 import styles from './index.scss';
 
@@ -12,13 +12,16 @@ import styles from './index.scss';
 export default class Sidebar extends Component {
 
   static propTypes = {
-
+    users: PropTypes.object.isRequired,
   }
 
   render() : Element {
-    return <div className={styles.sidebar}>
-      <Header/>
-      <Channels/>
-    </div>;
+    return (
+      <div className={styles.sidebar}>
+        <Header/>
+        <Channels/>
+        <Users {...this.props}/>
+      </div>
+    );
   }
 }
