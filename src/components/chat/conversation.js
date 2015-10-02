@@ -17,7 +17,37 @@ export default class Conversation extends Component {
     messages: [],
   }
 
-  renderMessages() : Array {
+  state = {
+    scrollAtBottom: true,
+  }
+
+  componentWillReceiveProps() {
+    // Determine if we're scrolled all the way down
+    // We need to do this so we can conditionally scroll to a new message only
+    // if the user was already at the bottom (or within a few px)
+    const { scrollTop, scrollHeight, offsetHeight } = this.refs.conversation;
+
+    // If the user is allllmost at the bottom, scroll anyway
+    const scrollFudge = 10;
+
+    this.setState({
+      scrollAtBottom: (scrollTop + offsetHeight - scrollHeight) >= -scrollFudge,
+    });
+  }
+
+  componentDidUpdate() {
+    // If we were scrolled to the bottom of the conversations window when a new
+    // message comes in, scroll down after render
+    if (!this.state.scrollAtBottom) {
+      return;
+    }
+
+    const $conversation = this.refs.conversation;
+    const { scrollHeight, offsetHeight } = $conversation;
+    $conversation.scrollTop = scrollHeight - offsetHeight;
+  }
+
+  renderMessages() {
     // TODO: group sequential messages from a user
     // TODO: group messages by date and display date header:
     //   <div className={styles.dateBreakActive}>September 21st</div>
@@ -27,10 +57,12 @@ export default class Conversation extends Component {
   }
 
   render() : Element {
-    return <div className={styles.conversation}>
-      <div className={styles.messages}>
-        {this.renderMessages()}
+    return (
+      <div ref='conversation' className={styles.conversation} >
+        <div className={styles.messages}>
+          {this.renderMessages()}
+        </div>
       </div>
-    </div>;
+    );
   }
 }
