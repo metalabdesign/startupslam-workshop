@@ -38,9 +38,8 @@ export const completeAuthentication = createAction(AUTH_COMPLETE, () => {
   const token = parseHash(window.location.hash);
 
   if (token) {
-    setToken(token);
     window.location.hash = '';
+    setToken(token);
+    return { token };
   }
-
-  return token;
 });

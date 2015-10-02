@@ -6,10 +6,8 @@ const initialState = {
 };
 
 export default function channels(state = initialState, action) {
-  switch (action.type) {
-  case AUTH_COMPLETE:
-    return {...state, token: action.payload};
-  default:
-    return state;
+  if (action.type === AUTH_COMPLETE && action.payload) {
+    return {...state, token: action.payload.token};
   }
+  return state;
 }
