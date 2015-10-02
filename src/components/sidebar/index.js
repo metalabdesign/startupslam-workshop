@@ -21,6 +21,9 @@ export default class Sidebar extends Component {
         <Header/>
         <Channels/>
         <Users {...this.props}/>
+        <div className={styles.credit}>
+          Made with ♥ by <a href='https://metalab.co'>MetaLab</a>
+        </div>
       </div>
     );
   }

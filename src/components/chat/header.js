@@ -17,7 +17,10 @@ export default class Header extends Component {
     const { title, topic } = this.props;
 
     return <div className={styles.header}>
-      <h1 className={styles.channelName}>{title}</h1>
+      <h1 className={styles.channelName}>
+        <span className={styles.hashSign}>#</span>
+        {title}
+      </h1>
       <RichText className={styles.topic} text={topic}/>
       {/* <span className={styles.userCount}>Users: 12</span> */}
     </div>;

@@ -14,18 +14,18 @@ export default class ChannelList extends Component {
   }
 
   render() : Element {
-    const channels = [ ];
+    const channels = [{name: 'general'}];
     return <div className={styles.channels}>
-      <h1>Channels</h1>
-      <a href=''>New</a>
+      <h1 className={styles.header}>Channels</h1>
       <ul>
         {channels.map(channel =>
-          <li>
-            <a href=''>{channel.name}</a>
+          <li className={styles.channel}>
+            <span className={styles.channelHash}>#</span>
+            {' '}
+            {channel.name}
           </li>
         )}
       </ul>
-      +10 More…
     </div>;
   }
 }
