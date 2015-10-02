@@ -7,22 +7,25 @@ import { retrieveMessages } from './api/messages';
 
 import {
   MESSAGE_SEND,
+  MESSAGE_RECEIVE,
   MESSAGES_FETCH,
   AUTH_COMPLETE,
   SOCKET_CONNECT,
 } from './action-types';
 
-// TODO: get token from auth flow
-
 export const messageSend = createAction(MESSAGE_SEND, (text, channel) => {
   channel.push('message', {text});
 });
 
-export const messagesFetch = createAction(MESSAGES_FETCH, token => {
+export const messageReceive = createAction(MESSAGE_RECEIVE, (obj) => {
+  return obj;
+});
+
+export const messagesFetch = createAction(MESSAGES_FETCH, (token) => {
   return retrieveMessages(token);
 });
 
-export const socketConnect = createAction(SOCKET_CONNECT, token => {
+export const socketConnect = createAction(SOCKET_CONNECT, (token, dispatch) => {
   const socket = new Socket(
     'wss://slerk-api.herokuapp.com/socket',
     {params: {token}}
@@ -31,7 +34,9 @@ export const socketConnect = createAction(SOCKET_CONNECT, token => {
 
   const channel = socket.channel(`channels:${generalChannelId}`);
   channel.join().receive('ok', () => {
-    // console.log('channel joined');
+    channel.on('message', (message) => {
+      dispatch(messageReceive(message));
+    });
   });
 
   return { channel, socket };

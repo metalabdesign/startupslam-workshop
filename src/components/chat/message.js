@@ -19,13 +19,18 @@ export default class Message extends Component {
 
   static propTypes = {
     user: PropTypes.object.isRequired,
-    time: PropTypes.string,
+    /* eslint-disable camelcase */
+    inserted_at: PropTypes.string,
+    /* eslint-enable camelcase */
     text: PropTypes.string,
     wide: PropTypes.bool,
   };
 
   render() : Element {
-    const { user, text, time, wide } = this.props;
+    const { user, text, wide } = this.props;
+    /* eslint-disable camelcase */
+    const insertedAt = this.props.inserted_at;
+    /* eslint-enable camelcase */
 
     return <div className={wide ? styles.first : styles.normal}>
       <img src={user.picture} className={styles.userImage}/>
@@ -33,7 +38,7 @@ export default class Message extends Component {
         <span className={styles.userName}>{user.name}</span>
         {' '}
         <span className={styles.timestamp}>
-          {moment(time).format('h:mm A')}
+          {moment(insertedAt).format('h:mm A')}
         </span>
       </div>
       <RichText className={styles.content} text={text}/>

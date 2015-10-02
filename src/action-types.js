@@ -1,4 +1,5 @@
 export const MESSAGE_SEND = 'MESSAGE_SEND';
+export const MESSAGE_RECEIVE = 'MESSAGE_RECEIVE';
 export const MESSAGES_FETCH = 'MESSAGES_FETCH';
 
 export const AUTH_COMPLETE = 'AUTH_COMPLETE';

@@ -1,5 +1,6 @@
+import { sortBy } from 'lodash';
 import { generalChannelId } from '../constants';
-import { MESSAGES_FETCH } from '../action-types';
+import { MESSAGES_FETCH, MESSAGE_RECEIVE } from '../action-types';
 
 // Single channel called 'general' for now
 // Uses a simple message state shape, will have to convert server responses
@@ -19,7 +20,9 @@ const initialState = {
           id: 'github|194892',
         },
         text: 'Welcome to Slerk!',
-        time: '2015-09-30T01:28:23+00:00',
+        /* eslint-disable camelcase */
+        inserted_at: '2015-09-30T01:28:23+00:00',
+        /* eslint-enable camelcase */
         meta: null,
         id: 'UUID-GOES-HERE',
         channel: {
@@ -31,25 +34,32 @@ const initialState = {
   },
 };
 
+function addMessagesToState(state, messages) {
+  const newMessages = sortBy(
+    [...state.general.messages, ...messages],
+    'inserted_at'
+  );
+
+  return {
+    ...state,
+    general: {
+      ...state.general,
+      messages: newMessages,
+    },
+  };
+}
+
 export default function channels(state = initialState, action) {
   switch (action.type) {
-  case MESSAGES_FETCH:
-    // TODO: remove this once we have something coming from the server
-    // Simulate messages from the server if we get an empty payload
-    const newMessages = action.payload.length > 0 ? action.payload.reverse() :
-      [{...initialState.general.messages[0], text: 'Hi from the server!'}];
 
-    return {
-      ...state,
-      general: {
-        ...state.general,
-        messages: [
-          ...state.general.messages,
-          ...newMessages,
-        ]
-      },
-    };
+  case MESSAGE_RECEIVE:
+    return addMessagesToState(state, [action.payload]);
+
+  case MESSAGES_FETCH:
+    return addMessagesToState(state, action.payload);
+
   default:
     return state;
+
   }
 }
