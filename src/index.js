@@ -32,8 +32,8 @@ if (isBrowser) {
   )(createStore)(reducer);
 
   const { token } = store.getState().auth;
-  store.dispatch(socketConnect(token));
   store.dispatch(messagesFetch(token));
+  store.dispatch(socketConnect(token, ::store.dispatch));
 
   rootComponent = (
     <div style={{height: '100%'}}>
