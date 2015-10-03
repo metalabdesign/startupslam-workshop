@@ -1,4 +1,5 @@
 import { Component, Element, PropTypes, createElement } from 'react';
+import { delay } from 'lodash';
 
 import Message from '../message';
 
@@ -42,9 +43,10 @@ export default class Conversation extends Component {
       return;
     }
 
-    const $conversation = this.refs.conversation;
-    const { scrollHeight, offsetHeight } = $conversation;
-    $conversation.scrollTop = scrollHeight - offsetHeight;
+    // Just set a ridiculous scrollTop and the browser will figure it out
+    const scroll = () => this.refs.conversation.scrollTop = 99999999999;
+    // DOM is slow - getting wrong offsetHeight/scrollHeight, so delay it
+    delay(scroll, 100);
   }
 
   renderMessages() {
