@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./build/server/server.js",
     "dev": "PORT=8080 ./node_modules/.bin/webpack-udev-server --client ./config/webpack/client.webpack.config.babel.js --server ./config/webpack/server.webpack.config.babel.js",
+    "windev": "set PORT=8080&&.\\node_modules\\.bin\\webpack-udev-server --client ./config/webpack/client.webpack.config.babel.js --server ./config/webpack/server.webpack.config.babel.js",
     "build": "npm run build:client && npm run build:server",
     "build:client": "./node_modules/.bin/webpack --bail --config ./config/webpack/client.webpack.config.babel.js",
     "build:server": "./node_modules/.bin/webpack --bail --config ./config/webpack/server.webpack.config.babel.js",
