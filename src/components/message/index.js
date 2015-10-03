@@ -17,6 +17,7 @@ export default class Message extends Component {
     inserted_at: PropTypes.string,
     /* eslint-enable camelcase */
     text: PropTypes.string,
+    // If we should show the avatar, time, and name
     detailed: PropTypes.bool,
   };
 
@@ -26,11 +27,19 @@ export default class Message extends Component {
     const insertedAt = this.props.inserted_at;
     /* eslint-enable camelcase */
 
+    if (detailed) {
+      return (
+        <Container detailed={detailed}>
+          <Avatar user={user} />
+          <Name user={user} />
+          <Timestamp insertedAt={insertedAt} />
+          <Content text={text} />
+        </Container>
+      );
+    }
+
     return (
       <Container detailed={detailed}>
-        <Avatar user={user} />
-        <Name user={user} />
-        <Timestamp insertedAt={insertedAt} />
         <Content text={text} />
       </Container>
     );
