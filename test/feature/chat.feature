@@ -1,3 +1,0 @@
-
-Feature: Chat
-	Scenario: 
