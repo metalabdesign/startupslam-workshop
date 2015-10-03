@@ -19,8 +19,7 @@ export default class Header extends Component {
         <span className={styles.hashSign}>#</span>
         [title]
       </h1>
-      <span>[topic]</span>
-      {/* <span className={styles.userCount}>Users: 12</span> */}
+      <span className={styles.topic}>[topic]</span>
     </div>;
   }
 }
