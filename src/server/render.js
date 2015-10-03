@@ -19,7 +19,7 @@ function body({ scripts = [] }) {
     const state = { };
     resolve({
       status: 200,
-      title: 'Hello World',
+      title: 'Slerk™',
       markup: renderToString(Root),
       scripts: [{
         id: 'state',
