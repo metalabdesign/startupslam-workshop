@@ -1,0 +1,20 @@
+{
+  "env": {
+    "node": true,
+    "browser": true
+  },
+  "extends": [
+    "./config/eslint/base.eslintrc",
+    "./config/eslint/react.eslintrc",
+    "./config/eslint/babel.eslintrc",
+    "./config/eslint/style.eslintrc",
+    "./config/eslint/filenames.eslintrc",
+    "./config/eslint/docs.eslintrc",
+    "./config/eslint/imports.eslintrc",
+    "./config/eslint/next.eslintrc"
+  ],
+  "rules": {
+    "comma-dangle": 0,
+    "no-extra-parens": 0
+  }
+}

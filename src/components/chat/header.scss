@@ -1,0 +1,25 @@
+.header {
+  box-shadow: 0px 0 15px 0px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #d0d0d0;
+  z-index: 20;
+}
+
+.channelName {
+  font-size: 24px;
+  margin: 1em;
+  display: inline-block;
+  font-weight: normal;
+}
+
+.topic {
+  display: inline-block;
+  color: #999;
+}
+
+.userCount {
+
+}
+
+.hashSign {
+  color: #999;
+}

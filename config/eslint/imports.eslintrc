@@ -1,0 +1,25 @@
+{
+  "plugins": [
+    "import"
+  ],
+
+  "settings": {
+    "import/parser": "babel-eslint",
+    "import/resolve": {
+      "moduleDirectory": [
+        "node_modules",
+        "./src"
+      ]
+    }
+  },
+
+  "rules": {
+    "import/no-unresolved": 2,
+    "import/named": 2,
+    "import/default": 0,
+    "import/no-require": 2,
+    "import/imports-first": [2, "absolute-first"],
+    "import/no-duplicates": 2,
+    "import/export": 2
+  }
+}
