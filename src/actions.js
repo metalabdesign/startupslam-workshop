@@ -4,11 +4,13 @@ import { setToken, parseHash } from './utils/auth';
 import { Socket } from './vendor/phoenix';
 import { generalChannelId } from './constants.js';
 import { retrieveMessages } from './api/messages';
+import { retrieveUsers } from './api/users';
 
 import {
   MESSAGE_SEND,
   MESSAGE_RECEIVE,
   MESSAGES_FETCH,
+  USERS_FETCH,
   USERS_UPDATE_PRESENCE,
   AUTH_COMPLETE,
   SOCKET_CONNECT,
@@ -24,6 +26,10 @@ export const messageReceive = createAction(MESSAGE_RECEIVE, (obj) => {
 
 export const messagesFetch = createAction(MESSAGES_FETCH, (token) => {
   return retrieveMessages(token);
+});
+
+export const usersFetch = createAction(USERS_FETCH, (users) => {
+  return retrieveUsers(users);
 });
 
 export const updateUserPresence = createAction(

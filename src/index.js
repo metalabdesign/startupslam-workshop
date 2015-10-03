@@ -19,7 +19,7 @@ if (isBrowser) {
   /* eslint import/no-require: 0 */
   const reducer = require('./reducers/index');
   const RootApp = require('./containers/root');
-  const { socketConnect, messagesFetch } = require('./actions');
+  const { socketConnect, messagesFetch, usersFetch } = require('./actions');
 
   const persistStateMiddleware = () =>
     persistState(window.location.href.match(/[?&]debugSession=([^&]+)\b/));
@@ -32,6 +32,7 @@ if (isBrowser) {
   )(createStore)(reducer);
 
   const { token } = store.getState().auth;
+  store.dispatch(usersFetch(token));
   store.dispatch(messagesFetch(token));
   store.dispatch(socketConnect(token, ::store.dispatch));
 
