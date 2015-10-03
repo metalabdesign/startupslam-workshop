@@ -1,10 +1,13 @@
 import { Component, Element, PropTypes, createElement } from 'react';
-
 import Container from './container';
+
+/*
+// Uncomment to access available components.
 import Avatar from './avatar';
 import Name from './name';
 import Timestamp from './timestamp';
 import Content from './content';
+*/
 
 /**
  * Message component
@@ -21,17 +24,9 @@ export default class Message extends Component {
   };
 
   render() : Element {
-    const { user, text, detailed } = this.props;
-    /* eslint-disable camelcase */
-    const insertedAt = this.props.inserted_at;
-    /* eslint-enable camelcase */
-
     return (
       <Container detailed={detailed}>
-        <Avatar user={user} />
-        <Name user={user} />
-        <Timestamp insertedAt={insertedAt} />
-        <Content text={text} />
+        [message]
       </Container>
     );
   }
