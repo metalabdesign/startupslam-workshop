@@ -101,7 +101,8 @@ Possible errors:
 In order to start using Slerk™ you must start a service that delivers the HTML, JavaScript, CSS and other assets to your web browser. For development this service is aptly called the development server and can be started from the command line.
 
 ```sh
-npm run dev
+npm run dev # On Mac OS & Linux distros
+npm run windev # For Windows developers
 ```
 
 Possible errors:
