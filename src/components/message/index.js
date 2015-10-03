@@ -25,7 +25,7 @@ export default class Message extends Component {
 
   render() : Element {
     return (
-      <Container detailed={detailed}>
+      <Container>
         [message]
       </Container>
     );
