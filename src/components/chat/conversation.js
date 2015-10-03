@@ -1,6 +1,6 @@
 import { Component, Element, PropTypes, createElement } from 'react';
 
-import Message from './message';
+import Message from '../message';
 
 import styles from './conversation.scss';
 
@@ -52,7 +52,7 @@ export default class Conversation extends Component {
     // TODO: group messages by date and display date header:
     //   <div className={styles.dateBreakActive}>September 21st</div>
     return this.props.messages.map(message => {
-      return <Message wide {...message}/>;
+      return <Message detailed {...message}/>;
     });
   }
 
