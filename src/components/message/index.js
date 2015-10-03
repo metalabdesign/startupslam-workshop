@@ -1,13 +1,11 @@
 import { Component, Element, PropTypes, createElement } from 'react';
 import Container from './container';
 
-/*
 // Uncomment to access available components.
 import Avatar from './avatar';
 import Name from './name';
 import Timestamp from './timestamp';
 import Content from './content';
-*/
 
 /**
  * Message component
@@ -27,7 +25,10 @@ export default class Message extends Component {
   render() : Element {
     return (
       <Container>
-        [message]
+        <Avatar user={this.props.user}/>
+        <Name user={this.props.user}/>
+        <Timestamp insertedAt={this.props.inserted_at}/>
+        <Content text={this.props.text}/>
       </Container>
     );
   }
