@@ -20,6 +20,7 @@ export default class Message extends Component {
     inserted_at: PropTypes.string,
     /* eslint-enable camelcase */
     text: PropTypes.string,
+    // If we should show the avatar, time, and name
     detailed: PropTypes.bool,
   };
 
