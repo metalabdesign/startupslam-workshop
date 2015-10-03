@@ -22,7 +22,6 @@ export default class Header extends Component {
         {title}
       </h1>
       <RichText className={styles.topic} text={topic}/>
-      {/* <span className={styles.userCount}>Users: 12</span> */}
     </div>;
   }
 }
