@@ -1,9 +1,24 @@
 import { Component, Element, PropTypes, createElement } from 'react';
 import { delay } from 'lodash';
+import moment from 'moment';
 
 import Message from '../message';
 
 import styles from './conversation.scss';
+
+const GROUP_DELAY = moment.duration(2, 'minutes').asMilliseconds();
+
+const isNewMessageGroup = (currentMessage, lastMessage) => {
+  if (lastMessage) {
+    const sameUser = currentMessage.user.id === lastMessage.user.id;
+    if (sameUser) {
+      const last = lastMessage.inserted_at;
+      const current = currentMessage.inserted_at;
+      return moment(current).diff(last) > GROUP_DELAY;
+    }
+  }
+  return true;
+};
 
 /**
  * A collection of messages.
@@ -50,12 +65,17 @@ export default class Conversation extends Component {
   }
 
   renderMessages() {
-    // TODO: group sequential messages from a user
-    // TODO: group messages by date and display date header:
+    // TODO: display date header:
     //   <div className={styles.dateBreakActive}>September 21st</div>
-    return this.props.messages.map(message => {
-      return <Message detailed {...message}/>;
-    });
+    let lastMessage;
+    return this.props.messages.filter(message => {
+      return message.text;
+    })
+      .map(message => {
+        const detailed = isNewMessageGroup(message, lastMessage);
+        lastMessage = message;
+        return <Message detailed={detailed} {...message}/>;
+      });
   }
 
   render() : Element {

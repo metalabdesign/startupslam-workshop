@@ -1,8 +1,6 @@
 .common {
-  position: relative;
-  padding-bottom: 10px;
   padding-left: 50px;
-  min-height: 50px;
+  clear: left;
 }
 
 .default {
@@ -12,5 +10,5 @@
 
 .detailed {
   composes: common;
-
+  padding-top: 20px;
 }

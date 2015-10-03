@@ -1,8 +1,8 @@
 .default {
-  position: absolute;
-  left: 0;
-  top: 0;
+  float: left;
   border-radius: 50%;
   display: block;
-  max-width: 40px;
+  width: 40px;
+  height: 40px;
+  margin-left: -50px;
 }
