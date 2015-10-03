@@ -16,9 +16,9 @@ export default class Header extends Component {
     return <div className={styles.header}>
       <h1 className={styles.channelName}>
         <span className={styles.hashSign}>#</span>
-        [title]
+        {this.props.title}
       </h1>
-      <span className={styles.topic}>[topic]</span>
+      <span className={styles.topic}>{this.props.topic}</span>
     </div>;
   }
 }
