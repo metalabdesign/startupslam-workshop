@@ -10,10 +10,9 @@
     "build:client": "./node_modules/.bin/webpack --bail --config ./config/webpack/client.webpack.config.babel.js",
     "build:server": "./node_modules/.bin/webpack --bail --config ./config/webpack/server.webpack.config.babel.js",
     "lint": "./node_modules/.bin/eslint --ignore-path .gitignore .",
-    "flowtype": "./node_modules/.bin/flow check --all",
     "spec": "TODO",
     "feature": "TODO",
-    "test": "npm run lint && npm run flowtype && npm run spec && npm run feature",
+    "test": "npm run lint",
     "postinstall": "npm run build"
   },
   "dependencies": {
@@ -73,7 +72,6 @@
     "eslint-plugin-filenames": "^0.1.1",
     "eslint-plugin-import": "^0.7.9",
     "eslint-plugin-react": "^3.4.2",
-    "flow-bin": "^0.16.0",
     "redux-devtools": "^2.1.5",
     "webpack-udev-server": "^0.2.2"
   },
